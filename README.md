@@ -30,4 +30,16 @@ Weitere geplante Funktionalitäten:
 - Eine einfache Steuerung des Peppers auf dem Tablet über JavaScript.
 - Ein Smart Home System mittels openHAB bedienen (teilweise fertig).
 - Einbindung von ChatGPT, um auf unbekannte, d.h. nicht vordefinierte, Spracheingaben zu reagieren (Grundgerüst erstellt).
-- 
+
+Um andere Anwendungen zu starten, muss jeweils ein eigenes Python-Skript hinzugefügt werden. Um z.B. die gleichnamigen Anwendungen auf dem Tablet zu starten gibt es folgende Python-Dateien:
+
+- `calculator.py` / Taschenrechner
+- `clock.py` / Digitaluhr
+- `connectfour.py` / 4 Gewinnt!
+- `hangman.py` / Galgenmännchen
+- `memory.py` / Memory
+- `numberguessing.py` / Zahlenratespiel
+- `quiz.py` / Quiz
+- `rockpaperscissors.py` / Schere-Stein-Papier
+- `tictactoe.py` / TicTacToe
+- `wordpuzzle.py` / Wortpuzzle
