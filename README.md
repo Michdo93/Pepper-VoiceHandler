@@ -23,7 +23,7 @@ Der Voice Handler (Voice Command Handler) kann folgendes nach Spracheingaben aus
 - Kann NAOqi-Applikationen starten und beenden, wenn richtig eingebunden.
 - Kann Python-, Java-, oder C++-Applikationen über `subprocess.Popen` starten und über `os.kill` beenden.
 
-Weitere geplante Funktionalitäten:
+### Weitere geplante Funktionalitäten
 
 - Den Akkustand durchsagen.
 - Den Akkustand auf dem Tablet grafisch darstellen.
@@ -43,3 +43,37 @@ Um andere Anwendungen zu starten, muss jeweils ein eigenes Python-Skript hinzuge
 - `rockpaperscissors.py` / Schere-Stein-Papier
 - `tictactoe.py` / TicTacToe
 - `wordpuzzle.py` / Wortpuzzle
+
+## Entwicklungsstand
+
+|Funktionalität|Stand|
+|---|---|
+|`Sprachsteuerung`|Vollständig, aber ungetestet|
+|`calculator.py` / Taschenrechner|Vollständig
+|`clock.py` / Digitaluhr|Vollständig|
+|`connectfour.py` / 4 Gewinnt!|Schrift zu klein, Spielfeld kann man als blauen Strich erahnen|
+|`hangman.py` / Galgenmännchen|Vollständig|
+|`memory.py` / Memory|Spielkarten werden noch falsch dargestellt|
+|`numberguessing.py` / Zahlenratespiel|Vollständig|
+|`quiz.py` / Quiz|Frage und Antwortmöglichkeiten werden nicht eingeblendet|
+|`rockpaperscissors.py` / Schere-Stein-Papier|Result wird nicht eingeblendet|
+|`tictactoe.py` / TicTacToe|Es fehlt der 1-Spieler-Modus gegen den Computer, gegen einen 2. Spieler kann man spielen|
+|`wordpuzzle.py` / Wortpuzzle|Es fehlt die Darstellung des zu erratenden Wortes|
+|Random-Songs abspielen|Vollständig, aber ungetestet|
+|Random-Bilder darstellen|Vollständig, aber ungetestet|
+|Random-Videos abspielen|Vollständig, aber ungetestet|
+|Random-Witze erzählen|Vollsändig, aber ungetestet|
+|Lovestory erzählen|Vollständig, aber ungetestet|
+|Rechenaufgaben per Spracheingabe lösen|Vollständig, aber ungetestet|
+|Synonym-Erkennung|Vollständig|
+|Zahlen aus Spracherkennung extrahieren|Vollständig|
+|NAOqi-Applikationen starten/beenden|Vollständig|
+|Python-Applikationen starten/beenden|Vollständig|
+|Java-Applikationen starten/beenden|Vermutlich vollständig|
+|C++-Applikationen starten/beenden|Vermutlich vollständig|
+|Den Akkustand durchsagen|Geplant|
+|Den Akkustand auf dem Tablet grafisch darstellen|Prototyp|
+|Pepper-Controller (JS)|Prototyp|
+|openHAB-Anbindung|Prototyp|
+|ChatGPT-Anbindung|Geplant|
+
