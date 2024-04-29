@@ -121,3 +121,33 @@ Anschließend muss die Überprüfung, welcher Satz gesagt werden soll erweitert 
 elif "meine neue Spracheingabe" in recognized_words:
     # todo
 ```
+
+In `# todo` muss natürlich die entsprechende Funktionalität hinzugefügt werden. Dies kann selbstverständlich von Sprachausgaben, bis hin zum Starten von Anwendungen, Bewegungen usw. alles sein.
+
+Wenn man mit Synonyme arbeiten möchte, sieht dies wie folgt aus:
+
+```
+elif self.check_synonyms(recognized_words, ["Hi", "Hallo", "Guten Tag", "Grüß Gott", "Servus", "Moin"]):
+    # todo
+```
+
+Ich habe einfach mal ein Beispiel für paar Synoyme gegeben. Diese wären allerdings bereits vorhanden. Die Synoyme werden als `list` übergeben.
+
+Wenn man z.B. eine oder mehrere Zahlen aus einer Spracheingabe extrahieren möchte, empfiehlt es sich z.B. eine Funktion hierfür zu schreiben, und neben den Zahlen im Vokabular auch ein Wort festzulegen, welches definitiv in dem genannten Satz vorkommen muss! Ein Beispiel für zwei Zahlen findet man in den Funktionen `addition`, `substraction`, `multiplication` und `division`. Ein Beispiel für eine Zahl findet man in den Funktionen `potentiation` und `extraction`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
