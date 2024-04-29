@@ -48,7 +48,7 @@ Um andere Anwendungen zu starten, muss jeweils ein eigenes Python-Skript hinzuge
 
 |Funktionalität|Stand|
 |---|---|
-|`Sprachsteuerung`|Vollständig, aber ungetestet|
+|`Sprachsteuerung`|Vollständig, aber nicht ausführlich getestet. Die Parameter müssen vermutlich angepasst werden, weil die Wahrscheinlichkeit von 90% zu schwer zu erreichen ist, bei 50% würde er aber oft auch das falsche ausführen wollen.|
 |`calculator.py` / Taschenrechner|Vollständig
 |`clock.py` / Digitaluhr|Vollständig|
 |`connectfour.py` / 4 Gewinnt!|Schrift zu klein, Spielfeld kann man als blauen Strich erahnen|
@@ -77,3 +77,47 @@ Um andere Anwendungen zu starten, muss jeweils ein eigenes Python-Skript hinzuge
 |openHAB-Anbindung|Prototyp|
 |ChatGPT-Anbindung|Geplant|
 
+## Code erweitern
+
+### Spracheingabe
+
+Um die Spracheingabe zu erweitern, muss als nächstes folgendes Vokabular in der `pepper.py` erweitert werden:
+
+```
+        vocabulary = ["Hi", "Hallo", "Guten Tag", "Grüß Gott", "Servus", "Moin", "Hey, wie geht's?",
+                      "Wie ist deine Stimmung?", "Was gibt's Neues?", "Wer bist du?",
+                      "Wie alt bist du?", "Woher kommst du?", "Was machst du hier?", "Bist du ein Roboter?",
+                      "Können wir Freunde sein?", "Magst du Fußball?", "Was sind deine Hobbys?", "Kannst du mir helfen?",
+                      "Was kannst du tun?", "Hast du Geschwister?", "Wo wohnst du?", "Kannst du kochen?", "Kannst du tanzen?",
+                      "Kannst du singen?", "Kannst du rechnen?", "Kannst du malen?", "Kannst du Geschichten erzählen?",
+                      "Was ist dein Lieblingsessen?", "Was ist deine Lieblingsfarbe?", "Was ist dein Lieblingsbuch?",
+                      "Was ist deine Lieblingsmusik?", "Was ist dein Lieblingsfilm?", "Magst du Tiere?", "Hast du Angst vor etwas?",
+                      "Kannst du fliegen?", "Kannst du schwimmen?", "Kannst du laufen?", "Was denkst du über die Welt?",
+                      "Was denkst du über Menschen?", "Hast du Träume?", "Was ist dein Ziel?", "Was ist dein Lieblingsort?",
+                      "Wie fühlst du dich heute?", "Was war dein schönstes Erlebnis?", "Was war dein traurigstes Erlebnis?",
+                      "Kannst du Liebe fühlen?", "Was ist deine Lieblingsjahreszeit?", "Magst du Regen?", "Was würdest du gerne mal machen?", "Erzähl mir einen Witz!",
+                      "Was ergibt", "Was sind", "Addiere", "Plus", "Subtrahiere", "Minus", "Multipliziere", "Mal", "Dividiere", "Geteilt durch", "Potenziere", "Hoch", "Wurzel aus",
+                      "TicTacToe starten", "TicTacToe beenden",
+                      "Vier Gewinnt starten", "Vier Gewinnt beenden",
+                      "Digitaluhr starten", "Digitaluhr beenden",
+                      "Galgenmännchen starten", "Galgenmännchen beenden",
+                      "Memory starten", "Memory beenden",
+                      "Zahlenratespiel starten", "Zahlenratespiel beenden",
+                      "Quiz starten", "Quiz beenden",
+                      "Schere Stein Papier starten", "Schere Stein Papier beenden",
+                      "Wort Puzzle starten", "Wort Puzzle beenden",
+                      "Taschenrechner starten", "Taschenrechner beenden",
+                      "Kannst du mir ein Video zeigen?", "Videowiedergabe beenden", "Kannst du Musik abspielen?", "Musikwiedergabe beenden"
+                      ]
+```
+
+Eine Schwierigkeit besteht darin, dass Wörter auch aneinander gruppiert werden müssen und nicht zu viele einzeln sein dürfen, weil er sonst Sätze leichter miteinander verwechselt. Auf der anderen Seite müssen einige Vokabeln zwecks "Synonimität" eher einzeln bleiben.
+
+Die Änderung am Vokabular bedingt einen Neustart des Peppers!
+
+Anschließend muss die Überprüfung, welcher Satz gesagt werden soll erweitert werden:
+
+```
+elif "meine neue Spracheingabe" in recognized_words:
+    # todo
+```
