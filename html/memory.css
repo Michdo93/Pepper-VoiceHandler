@@ -1,37 +1,52 @@
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
+.game-container {
+    display: flex; /* Flexbox-Container */
+    flex-wrap: wrap; /* Zeilenumbruch für mehrere Reihen */
+    justify-content: center; /* Zentrierte Ausrichtung */
+}
+
+h1 {
+    text-align: center;
+    font-size: 72px;
 }
 
 #score {
-    font-size: 36px;
+    text-align: center;
+    font-size: 48px;
 }
 
-#restart {
-    font-size: 36px;
+button {
+    text-align: center;
+    font-size: 48px;
+    padding: 20px 40px;
+    margin-top: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block; /* Um die Zentrierung zu ermöglichen */
+    margin: 0 auto; /* Horizontal zentrieren */
 }
 
-.row {
-    display: flex;
+button:hover {
+    background-color: #0056b3;
 }
 
 .card {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 200px;
     background-color: #ddd;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 48px;
+    font-size: 90px;
     cursor: pointer;
     transition: transform 0.3s ease;
     transform-style: preserve-3d;
-    margin-right: 10px; /* Abstand zwischen den Karten */
+    transform: rotateY(180deg);
+    margin: 5px; /* Abstand zwischen den Karten */
+    flex-basis: calc(25% - 10px); /* 25% Breite für jede Karte mit Abstand */
 }
 
 .card > div {
@@ -50,15 +65,12 @@ body {
 
 .card .back {
     background-color: #fff;
-    transform: rotateY(180deg);
-    font-size: 48px;
+    transform: rotateY(0deg);
 }
 
 .card.flipped {
-    transform: rotateY(180deg);
-    font-size: 48px;
+    transform: rotateY(0deg);
+    background-color: #eee;
 }
 
-.card.hidden {
-    font-size: 0;
-}
+.hidden { font-size: 0; }

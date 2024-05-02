@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#controls {
+    text-align: center;
+}
+
+#controls div {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+#cameraStream {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#videoStream {
+    width: 640px; /* Beispielbreite, je nach Kamerabild anpassen */
+    height: 480px; /* Beispielhöhe, je nach Kamerabild anpassen */
+}

@@ -16,7 +16,7 @@ const questions = [
     },
     {
         question: "Was ist ein Algorithmus?",
-        options: ["Eine spezielle Rechenoperation", "Ein großer Computer", "Ein bestimmtes Programm", "Eine mathematische Formel"],
+        options: ["Ein großer Computer", "Eine spezielle Rechenoperation", "Ein bestimmtes Programm", "Eine mathematische Formel"],
         answer: "Eine spezielle Rechenoperation"
     },
     {
@@ -26,7 +26,7 @@ const questions = [
     },
     {
         question: "Was ist ein 'Byte'?",
-        options: ["Eine Maßeinheit für Daten", "Ein kleines Insekt", "Eine Verbindung im Internet", "Eine Art von Programmiersprache"],
+        options: ["Eine Verbindung im Internet", "Eine Art von Programmiersprache", "Eine Maßeinheit für Daten", "Ein kleines Insekt"],
         answer: "Eine Maßeinheit für Daten"
     },
     {
@@ -36,7 +36,7 @@ const questions = [
     },
     {
         question: "Was ist ein 'Router'?",
-        options: ["Ein Gerät zur Datenübertragung zwischen Computernetzwerken", "Ein elektronisches Werkzeug", "Ein Programm zum Zeichnen von Linien", "Ein Bestandteil eines Autos"],
+        options: ["Ein elektronisches Werkzeug", "Ein Gerät zur Datenübertragung zwischen Computernetzwerken", "Ein Programm zum Zeichnen von Linien", "Ein Bestandteil eines Autos"],
         answer: "Ein Gerät zur Datenübertragung zwischen Computernetzwerken"
     },
     {
@@ -46,62 +46,90 @@ const questions = [
     },
     {
         question: "Was bedeutet 'URL'?",
-        options: ["Uniform Resource Locator", "Unique Radio Location", "Universal Research Link", "Ultimate Reality Location"],
+        options: ["Universal Research Link", "Uniform Resource Locator", "Unique Radio Location", "Ultimate Reality Location"],
         answer: "Uniform Resource Locator"
     }
-];    
+];
 
-let currentQuestion = 0;
-let score = 0;
+var currentQuestion = 0;
+var score = 0;
 
-const questionElement = document.getElementById('question');
-const optionsElement = document.getElementById('options');
-const resultElement = document.getElementById('result');
-const nextButton = document.getElementById('nextButton');
+var questionElement = document.getElementById('question');
+var optionsElement = document.getElementById('options');
+var resultElement = document.getElementById('result');
+var nextButton = document.getElementById('nextButton');
 
 function displayQuestion() {
-    questionElement.textContent = questions[currentQuestion].question;
-    optionsElement.innerHTML = '';
+    questionElement.innerHTML = questions[currentQuestion].question;
 
-    questions[currentQuestion].options.forEach(option => {
-        const button = document.createElement('button');
-        button.textContent = option;
-        button.classList.add('option');
-        button.addEventListener('click', checkAnswer);
-        optionsElement.appendChild(button);
-    });
+    var options = questions[currentQuestion].options;
+    for (var i = 0; i < options.length; i++) {
+        var optionButton = document.getElementById('option' + i);
+        optionButton.innerHTML = options[i];
+        optionButton.onclick = function(optionIndex) {
+            return function() {
+                checkAnswer(optionIndex);
+            };
+        }(i);
+    }
 }
 
-function checkAnswer(e) {
-    const selectedOption = e.target.textContent;
-    if (selectedOption === questions[currentQuestion].answer) {
+function checkAnswer(optionIndex) {
+    var selectedOption = questions[currentQuestion].options[optionIndex];
+    var correctAnswer = questions[currentQuestion].answer;
+    if (selectedOption === correctAnswer) {
         score++;
-        resultElement.textContent = 'Richtig!';
+        resultElement.innerHTML = 'Richtig!';
     } else {
-        resultElement.textContent = 'Falsch!';
+        resultElement.innerHTML = 'Falsch!';
     }
     nextButton.disabled = false;
-    optionsElement.querySelectorAll('.option').forEach(option => option.disabled = true);
+    disableOptions();
+}
+
+function disableOptions() {
+    for (var i = 0; i < 4; i++) {
+        var optionButton = document.getElementById('option' + i);
+        optionButton.disabled = true;
+    }
 }
 
 function nextQuestion() {
     currentQuestion++;
     if (currentQuestion < questions.length) {
         displayQuestion();
-        resultElement.textContent = '';
+        resultElement.innerHTML = '';
+        nextButton.innerHTML = 'Nächste Frage';
         nextButton.disabled = true;
+        enableOptions();
     } else {
         endQuiz();
     }
 }
 
-function endQuiz() {
-    questionElement.textContent = `Quiz beendet! Du hast ${score} von ${questions.length} Fragen richtig beantwortet.`;
-    optionsElement.innerHTML = '';
-    resultElement.textContent = '';
-    nextButton.disabled = true;
+function enableOptions() {
+    for (var i = 0; i < 4; i++) {
+        var optionButton = document.getElementById('option' + i);
+        optionButton.disabled = false;
+    }
 }
 
-nextButton.addEventListener('click', nextQuestion);
+function endQuiz() {
+    optionsElement.style.display = "none";
+    questionElement.innerHTML = 'Quiz beendet! Du hast ' + score + ' von ' + questions.length + ' Fragen richtig beantwortet.';
+    resultElement.innerHTML = '';
+    nextButton.innerHTML = 'Spiel neustarten';
+    nextButton.onclick = resetQuiz;
+}
+
+function resetQuiz() {
+    optionsElement.style.display = "block";
+    currentQuestion = 0;
+    score = 0;
+    displayQuestion();
+    nextButton.innerHTML = 'Nächste Frage';
+    nextButton.onclick = nextQuestion;
+    enableOptions();
+}
 
 displayQuestion();

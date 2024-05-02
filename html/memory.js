@@ -4,10 +4,7 @@ var hasFlippedCard = false;
 var lockBoard = false;
 var firstCard, secondCard;
 
-var row1 = document.getElementById('row1');
-var row2 = document.getElementById('row2');
-var row3 = document.getElementById('row3');
-var row4 = document.getElementById('row4');
+var gameContainer = document.getElementById('game-container');
 var moveCounter = document.getElementById('move-counter');
 
 function shuffle(array) {
@@ -21,38 +18,23 @@ function shuffle(array) {
 }
 
 function createBoard() {
-    row1.innerHTML = '';
-    row2.innerHTML = '';
-    row3.innerHTML = '';
-    row4.innerHTML = '';
+    gameContainer.innerHTML = '';
     moves = 0;
     moveCounter.textContent = moves;
     lockBoard = false;
 
     var shuffledCards = shuffle(cards);
-    var rows = [row1, row2, row3, row4];
-    var rowIndex = 0;
-
-    shuffledCards.forEach(function (card) {
+    for (var i = 0; i < shuffledCards.length; i++) {
+        var card = shuffledCards[i];
         var memoryCard = document.createElement('div');
         memoryCard.className = 'card hidden';
         memoryCard.dataset.framework = card;
-
-        var front = document.createElement('div');
-        front.className = 'front';
-        front.textContent = card;
-
-        var back = document.createElement('div');
-        back.className = 'back';
-
-        memoryCard.appendChild(front);
-        memoryCard.appendChild(back);
+        memoryCard.textContent = card;
 
         memoryCard.addEventListener('click', flipCard);
 
-        rows[rowIndex].appendChild(memoryCard);
-        rowIndex = (rowIndex + 1) % rows.length;
-    });
+        gameContainer.appendChild(memoryCard);
+    }
 }
 
 function flipCard() {

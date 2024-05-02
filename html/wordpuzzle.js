@@ -1,5 +1,5 @@
 // Array von Wörtern für das Spiel
-var words = ["HFU", "Pepper", "Robotik"];
+var words = ["HFU", "Pepper", "Robotik", "Informatik"];
 
 // Zufälliges Wort auswählen
 var selectedWord = words[Math.floor(Math.random() * words.length)];
@@ -8,11 +8,18 @@ var selectedWord = words[Math.floor(Math.random() * words.length)];
 var wordToGuess = selectedWord.split('');
 
 // Verdecktes Wort mit Platzhaltern initialisieren
-var displayWord = Array(wordToGuess.length).fill('_');
+var displayWord = new Array(wordToGuess.length);
+for (var i = 0; i < wordToGuess.length; i++) {
+    displayWord[i] = '_';
+}
 
 // Funktion zum Anzeigen des aktuellen Spielstands
 function updateDisplay() {
-    document.getElementById('word-display').innerText = displayWord.join(' ');
+    var display = "";
+    for (var i = 0; i < displayWord.length; i++) {
+        display += displayWord[i] + " ";
+    }
+    document.getElementById('word-display').innerHTML = display;
 }
 
 // Funktion zum Überprüfen des eingegebenen Wortes
@@ -28,13 +35,15 @@ function checkGuess() {
     }
 }
 
-
 // Funktion zum Zurücksetzen des Spiels
 function resetGame() {
     // Zufälliges Wort auswählen
     selectedWord = words[Math.floor(Math.random() * words.length)];
     wordToGuess = selectedWord.split('');
-    displayWord = Array(wordToGuess.length).fill('_');
+    displayWord = new Array(wordToGuess.length);
+    for (var i = 0; i < wordToGuess.length; i++) {
+        displayWord[i] = '_';
+    }
     updateDisplay();
     document.getElementById('guess-input').value = '';
 }

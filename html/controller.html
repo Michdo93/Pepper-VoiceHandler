@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepper Steuerung</title>
+    <link rel="stylesheet" href="controller.css">
+</head>
+<body>
+    <div id="cameraStream">
+        <h2>Kamera-Stream</h2>
+        <video id="videoStream" autoplay></video>
+    </div>
+
+    <div id="controls">
+        <h2>Motion Steuerung</h2>
+        <div>
+            <label for="speed">Geschwindigkeit:</label>
+            <input type="range" id="speed" min="0" max="100" value="50">
+        </div>
+        <div>
+            <label for="distance">Entfernung:</label>
+            <input type="text" id="distance">
+        </div>
+        <button id="moveForwardBtn">Vorwärts</button>
+        <button id="moveBackwardBtn">Rückwärts</button>
+        <button id="moveRightBtn">Rechts</button>
+        <button id="moveLeftBtn">Links</button>
+        <button id="stopBtn">Stop</button>
+    </div>
+
+    <script src="10.57.0.100/libs/qimessaging/2/qimessaging.js"></script>
+    <script src="https://www.promisejs.org/polyfills/promise-6.0.0.min.js"></script>
+    <script src="controller.js"></script>
+</body>
+</html>

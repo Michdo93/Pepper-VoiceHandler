@@ -1,21 +1,23 @@
-const ROWS = 6;
-const COLS = 7;
-const board = [];
-let currentPlayer = 'rot';
-let gameover = false;
+var ROWS = 6;
+var COLS = 7;
+var board = [];
+var currentPlayer = 'rot';
+var gameover = false;
 
 // Initialize the board
 function initializeBoard() {
-    const boardElement = document.getElementById('board');
-    for (let row = 0; row < ROWS; row++) {
+    var boardElement = document.getElementById('board');
+    var cells = boardElement.getElementsByTagName('td');
+    for (var i = 0; i < cells.length; i++) {
+        cells[i].onclick = (function(index) {
+            return function() {
+                dropPiece(index % COLS);
+            };
+        })(i);
+    }
+    for (var row = 0; row < ROWS; row++) {
         board[row] = [];
-        for (let col = 0; col < COLS; col++) {
-            const cell = document.createElement('div');
-            cell.className = 'cell';
-            cell.dataset.row = row;
-            cell.dataset.col = col;
-            cell.addEventListener('click', () => dropPiece(col));
-            boardElement.appendChild(cell);
+        for (var col = 0; col < COLS; col++) {
             board[row][col] = null;
         }
     }
@@ -24,14 +26,15 @@ function initializeBoard() {
 // Drop a piece in the specified column
 function dropPiece(col) {
     if (gameover) return;
-    const row = getLowestEmptyRow(col);
+    var row = getLowestEmptyRow(col);
     if (row !== -1) {
-        const cell = document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
-        cell.classList.add(currentPlayer);
+        var index = row * COLS + col;
+        var cell = document.getElementById('board').getElementsByTagName('td')[index];
+        cell.className += ' ' + currentPlayer;
         board[row][col] = currentPlayer;
         if (checkWinner(row, col)) {
             gameover = true;
-            alert(`${currentPlayer.toUpperCase()} gewinnt!`);
+            alert(currentPlayer.toUpperCase() + ' gewinnt!');
         } else if (checkDraw()) {
             gameover = true;
             alert("It's a draw!");
@@ -43,7 +46,7 @@ function dropPiece(col) {
 
 // Get the lowest empty row in the specified column
 function getLowestEmptyRow(col) {
-    for (let row = ROWS - 1; row >= 0; row--) {
+    for (var row = ROWS - 1; row >= 0; row--) {
         if (board[row][col] === null) {
             return row;
         }
@@ -53,28 +56,33 @@ function getLowestEmptyRow(col) {
 
 // Check if there is a winner
 function checkWinner(row, col) {
-    const directions = [
+    var directions = [
         [0, 1], [1, 0], [1, 1], [-1, 1] // right, down, diagonal right, diagonal left
     ];
-    for (let [dx, dy] of directions) {
-        let count = 1;
-        for (let i = 1; i <= 3; i++) {
-            const newRow = row + i * dy;
-            const newCol = col + i * dx;
-            if (newRow < 0 || newRow >= ROWS || newCol < 0 || newCol >= COLS) break;
+    for (var _i = 0, directions_1 = directions; _i < directions_1.length; _i++) {
+        var _a = directions_1[_i], dx = _a[0], dy = _a[1];
+        var count = 1;
+        for (var i = 1; i <= 3; i++) {
+            var newRow = row + i * dy;
+            var newCol = col + i * dx;
+            if (newRow < 0 || newRow >= ROWS || newCol < 0 || newCol >= COLS)
+                break;
             if (board[newRow][newCol] === currentPlayer) {
                 count++;
-            } else {
+            }
+            else {
                 break;
             }
         }
-        for (let i = 1; i <= 3; i++) {
-            const newRow = row - i * dy;
-            const newCol = col - i * dx;
-            if (newRow < 0 || newRow >= ROWS || newCol < 0 || newCol >= COLS) break;
+        for (var i = 1; i <= 3; i++) {
+            var newRow = row - i * dy;
+            var newCol = col - i * dx;
+            if (newRow < 0 || newRow >= ROWS || newCol < 0 || newCol >= COLS)
+                break;
             if (board[newRow][newCol] === currentPlayer) {
                 count++;
-            } else {
+            }
+            else {
                 break;
             }
         }
@@ -87,17 +95,24 @@ function checkWinner(row, col) {
 
 // Check if it's a draw
 function checkDraw() {
-    return board.every(row => row.every(cell => cell !== null));
+    for (var row = 0; row < ROWS; row++) {
+        for (var col = 0; col < COLS; col++) {
+            if (board[row][col] === null) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 // Reset the game
 function resetGame() {
-    const cells = document.querySelectorAll('.cell');
-    cells.forEach(cell => {
-        cell.className = 'cell';
-    });
-    for (let row = 0; row < ROWS; row++) {
-        for (let col = 0; col < COLS; col++) {
+    var cells = document.getElementsByClassName('cell');
+    for (var i = 0; i < cells.length; i++) {
+        cells[i].className = 'cell';
+    }
+    for (var row = 0; row < ROWS; row++) {
+        for (var col = 0; col < COLS; col++) {
             board[row][col] = null;
         }
     }

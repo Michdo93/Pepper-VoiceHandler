@@ -16,15 +16,33 @@ function selectMode(mode) {
         modeBtn2.className = "but selected";
         modeBtn1.className = "but";
     }
+
+    startGame();
 }
 
 // Function to start the game
 function startGame() {
     resetBoard(); // Reset the game board
+    document.getElementById('print').innerHTML = ""; // Clear game status message
     currentPlayer = "X"; // Reset current player to X
     if (gameMode === 1 && currentPlayer === "O") {
         // If it's the computer's turn and in 1-Player mode
         setTimeout(computerTurn, 500); // Delay computer turn for better user experience
+    }
+}
+
+// Function to simulate the computer's turn
+function computerTurn() {
+    if (!document.getElementById('print').innerHTML.includes("gewonnen")) {
+        // Choose a random empty cell for the computer's move
+        var emptyCells = document.querySelectorAll('.cell[value=""]');
+        if (emptyCells.length > 0) {
+            var randomIndex = Math.floor(Math.random() * emptyCells.length);
+            var randomCell = emptyCells[randomIndex];
+            randomCell.value = "O";
+            currentPlayer = "X"; // Switch back to player after computer's turn
+            myfunc(); // Check game status after computer's move
+        }
     }
 }
 
@@ -44,19 +62,6 @@ function handleTurn(cellId) {
         }
         // Check game status after each move
         myfunc();
-    }
-}
-
-// Function to simulate the computer's turn
-function computerTurn() {
-    // Choose a random empty cell for the computer's move
-    var emptyCells = document.querySelectorAll('.cell[value=""]');
-    if (emptyCells.length > 0) {
-        var randomIndex = Math.floor(Math.random() * emptyCells.length);
-        var randomCell = emptyCells[randomIndex];
-        randomCell.value = "O";
-        currentPlayer = "X"; // Switch back to player after computer's turn
-        myfunc(); // Check game status after computer's move
     }
 }
 
@@ -141,12 +146,5 @@ function highlightCells(cells) {
 
 // Function to reset game
 function resetGame() {
-    resetBoard(); // Reset the game board
-    currentPlayer = "X"; // Reset current player to X
-    document.getElementById('print').innerHTML = ""; // Clear game status message
-    var cells = document.querySelectorAll('.cell');
-    for (var i = 0; i < cells.length; i++) {
-        cells[i].disabled = false; // Enable all cells
-        cells[i].style.color = ""; // Reset cell color
-    }
+    window.location.reload(); // Reload the page to reset the game
 }

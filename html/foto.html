@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotoanwendung</title>
+    <link rel="stylesheet" href="foto.css">
+</head>
+<body>
+    <div id="controls">
+        <h2>Fotoeinstellungen</h2>
+        <div>
+            <label for="resolution">Auflösung:</label>
+            <select id="resolution">
+                <option value="0">640x480</option>
+                <option value="1">1280x960</option>
+                <option value="2">2560x1920</option>
+            </select>
+        </div>
+        <div>
+            <label for="pictureFormat">Bildformat:</label>
+            <select id="pictureFormat">
+                <option value="0">JPEG</option>
+                <option value="1">PNG</option>
+            </select>
+        </div>
+        <button id="captureBtn">Foto schießen</button>
+    </div>
+
+    <div id="gallery">
+        <h2>Galerie</h2>
+        <div id="imageList"></div>
+        <button id="deleteBtn">Ausgewähltes Bild löschen</button>
+    </div>
+
+    <script src="10.57.0.100/libs/qimessaging/2/qimessaging.js"></script>
+    <script src="https://www.promisejs.org/polyfills/promise-6.0.0.min.js"></script>
+    <script src="foto.js"></script>
+</body>
+</html>

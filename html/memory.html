@@ -7,14 +7,10 @@
     <link rel="stylesheet" href="memory.css">
 </head>
 <body>
+    <h1>Memory</h1>
+    <div class="game-container" id="game-container"></div>
     <div class="score" id="score">Anzahl Züge: <span id="move-counter">0</span></div>
-    <div class="game-container">
-        <div class="row" id="row1"></div>
-        <div class="row" id="row2"></div>
-        <div class="row" id="row3"></div>
-        <div class="row" id="row4"></div>
-    </div>
-    <button id="restart" onclick="restartGame()">Spiel neustarten</button>
+    <button onclick="restartGame()">Spiel neustarten</button>
     <script src="memory.js"></script>
 </body>
 </html>

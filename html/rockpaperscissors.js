@@ -1,30 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const choices = document.querySelectorAll('.choice');
-    const result = document.getElementById('result');
-    const resetButton = document.getElementById('reset');
+    var choices = document.querySelectorAll('.choice');
+    var result = document.getElementById('result');
+    var resetButton = document.getElementById('reset');
 
-    choices.forEach(choice => choice.addEventListener('click', playGame));
+    for (var i = 0; i < choices.length; i++) {
+        choices[i].addEventListener('click', playGame);
+    }
     resetButton.addEventListener('click', resetGame);
 
     function playGame(e) {
-        const playerChoice = e.target.id;
-        const computerChoice = getComputerChoice();
-        const winner = getWinner(playerChoice, computerChoice);
+        var playerChoice = e.target.id;
+        var computerChoice = getComputerChoice();
+        var winner = getWinner(playerChoice, computerChoice);
         displayResult(winner, computerChoice);
     }
 
     function getComputerChoice() {
-        const choices = ['Stein', 'Papier', 'Schere'];
-        const randomIndex = Math.floor(Math.random() * 3);
+        var choices = ['Stein', 'Papier', 'Schere'];
+        var randomIndex = Math.floor(Math.random() * 3);
         return choices[randomIndex];
     }
 
     function getWinner(player, computer) {
         if (player === computer) {
             return 'draw';
-        } else if ((player === 'Stein' && computer === 'Schere') ||
-                   (player === 'Papier' && computer === 'Stein') ||
-                   (player === 'Schere' && computer === 'Papier')) {
+        } else if ((player === 'rock' && computer === 'scissors') ||
+                   (player === 'paper' && computer === 'rock') ||
+                   (player === 'scissors' && computer === 'paper')) {
             return 'player';
         } else {
             return 'computer';
@@ -32,15 +34,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function displayResult(winner, computerChoice) {
-        let message = '';
+        var message = '';
         if (winner === 'player') {
             message = 'Du hast gewonnen!';
         } else if (winner === 'computer') {
             message = 'Der Computer gewinnt!';
         } else {
-            message = 'Es ist ein untentschieden!';
+            message = 'Es ist ein Unentschieden!';
         }
-        result.textContent = `${message} Computer wählt ${computerChoice}.`;
+        result.textContent = message + ' Computer wählt ' + computerChoice + '.';
     }
 
     function resetGame() {
