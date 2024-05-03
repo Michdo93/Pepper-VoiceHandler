@@ -234,7 +234,7 @@ class VoiceHandler(object):
         print("Erkannte Worte: {}".format(recognized_words))
         print("Vertrauen: {}".format(confidence))
 
-        if confidence > 0.7:
+        if confidence > 0.5:
             if self.check_synonyms(recognized_words, ["Hi", "Hallo", "Guten Tag", "Grüß Gott", "Servus", "Moin"]):
                 strings = ["Servus Erdnuss.", "Guten Tag.", "Hi, hi!", "Moin, Moin", "Guten Morgen",
                         "Hallihllöchen.", "Hi.", "Hallo.", "Servus.", "Sei gegrüßt",
