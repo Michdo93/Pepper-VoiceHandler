@@ -59,8 +59,9 @@ Um andere Anwendungen zu starten, muss jeweils ein eigenes Python-Skript hinzuge
 |`rockpaperscissors.py` / Schere-Stein-Papier|Vollständig|
 |`tictactoe.py` / TicTacToe|Vollständig|
 |`wordpuzzle.py` / Wortpuzzle|Vollständig|
-|Random-Songs abspielen|Vollständig|
-|Random-Bilder darstellen|Vollständig, aber ungetestet|
+|Tanzen|Vollständig|
+|Random-Songs abspielen / Singen|Vollständig|
+|Random-Bilder darstellen / Malen|Vollständig, aber ungetestet|
 |Random-Videos abspielen|Vollständig, aber ungetestet|
 |Random-Witze erzählen|Vollsändig|
 |Lovestory erzählen|Vollständig, aber ungetestet (bricht glaube ich ab, weil Story zu lang).|
