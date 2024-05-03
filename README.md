@@ -48,25 +48,25 @@ Um andere Anwendungen zu starten, muss jeweils ein eigenes Python-Skript hinzuge
 
 |Funktionalität|Stand|
 |---|---|
-|`Sprachsteuerung`|Vollständig, aber nicht ausführlich getestet. Die Parameter müssen vermutlich angepasst werden, weil die Wahrscheinlichkeit von 90% zu schwer zu erreichen ist, bei 50% würde er aber oft auch das falsche ausführen wollen.|
+|`Sprachsteuerung`|Vollständig, aber nicht ausführlich getestet. Es wird mit einer Wahrscheinlichkeit von 50% gearbeitet, was oft noch nicht einmal erreicht wird und teilweise auch zu falschen Eingaben führt.|
 |`calculator.py` / Taschenrechner|Vollständig
 |`clock.py` / Digitaluhr|Vollständig|
-|`connectfour.py` / 4 Gewinnt!|Schrift zu klein, Spielfeld kann man als blauen Strich erahnen|
+|`connectfour.py` / 4 Gewinnt!|Vollständig|
 |`hangman.py` / Galgenmännchen|Vollständig|
-|`memory.py` / Memory|Spielkarten werden noch falsch dargestellt|
+|`memory.py` / Memory|Vollständig|
 |`numberguessing.py` / Zahlenratespiel|Vollständig|
-|`quiz.py` / Quiz|Frage und Antwortmöglichkeiten werden nicht eingeblendet|
-|`rockpaperscissors.py` / Schere-Stein-Papier|Result wird nicht eingeblendet|
-|`tictactoe.py` / TicTacToe|Es fehlt der 1-Spieler-Modus gegen den Computer, gegen einen 2. Spieler kann man spielen|
-|`wordpuzzle.py` / Wortpuzzle|Es fehlt die Darstellung des zu erratenden Wortes|
-|Random-Songs abspielen|Vollständig, aber ungetestet|
+|`quiz.py` / Quiz|Vollständig|
+|`rockpaperscissors.py` / Schere-Stein-Papier|Vollständig|
+|`tictactoe.py` / TicTacToe|Vollständig|
+|`wordpuzzle.py` / Wortpuzzle|Vollständig|
+|Random-Songs abspielen|Vollständig|
 |Random-Bilder darstellen|Vollständig, aber ungetestet|
 |Random-Videos abspielen|Vollständig, aber ungetestet|
-|Random-Witze erzählen|Vollsändig, aber ungetestet|
-|Lovestory erzählen|Vollständig, aber ungetestet|
-|Rechenaufgaben per Spracheingabe lösen|Vollständig, aber ungetestet|
-|Synonym-Erkennung|Vollständig|
-|Zahlen aus Spracherkennung extrahieren|Vollständig|
+|Random-Witze erzählen|Vollsändig|
+|Lovestory erzählen|Vollständig, aber ungetestet (bricht glaube ich ab, weil Story zu lang).|
+|Rechenaufgaben per Spracheingabe lösen|Vollständig, aber wird durch Spracherkennung nicht richtig erkannt|
+|Synonym-Erkennung|Vollständig, aber wird glaube ich nicht richtig durch die Spracherkennung eingesetzt|
+|Zahlen aus Spracherkennung extrahieren|Vollständig, aber wird durch Spracherkennung nicht richtig erkannt|
 |NAOqi-Applikationen starten/beenden|Vollständig|
 |Python-Applikationen starten/beenden|Vollständig|
 |Java-Applikationen starten/beenden|Vermutlich vollständig|
